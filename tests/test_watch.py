@@ -104,3 +104,13 @@ def test_channels_skip_when_not_set_up(monkeypatch):
     assert not watch.send_github_issue(alert)
     assert not watch.send_ntfy(alert)
     assert not watch.send_email(alert)
+
+
+def test_decode_fixes_missing_charset():
+    """Sites that don't declare a charset must still give '£', not 'Â£'."""
+    import requests
+    resp = requests.Response()
+    resp._content = "<p class='price_color'>£51.77</p>".encode("utf-8")
+    resp.headers["Content-Type"] = "text/html"            # no charset given
+    resp.encoding = "ISO-8859-1"                           # what requests would guess
+    assert watch.extract(watch.decode(resp), "p.price_color") == "£51.77"
