@@ -1,7 +1,7 @@
 {
   "A Light in the Attic - price": {
-    "value": "Â£51.77",
-    "hash": "acdafe06ce29f9036faa8adefe28cb6bab862998cd5accd05b0c37aa63f31a0c",
+    "value": "£51.77",
+    "hash": "f4a125658f47415b5439aec15bc39358603798960f1412ce523bcf3ce52d3b43",
     "broken": false,
     "rule_met": true
   },
@@ -11,8 +11,8 @@
     "broken": false
   },
   "Demo status page": {
-    "value": "Status: all systems normal. Opening hours 9am-5pm.",
-    "hash": "44adf3d759a7f0d8fcb3f8d42ce44822a624e94ac441297804d1371136789439",
+    "value": "Status: holiday hours. Open 10am-2pm on Nov 27.",
+    "hash": "4a19d0fed49cb4aaec967640c7552f178100d673e186288bae0781b0ea913a99",
     "broken": false
   }
 }
