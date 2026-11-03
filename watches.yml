@@ -1,0 +1,25 @@
+# The pages this bot watches. Add as many as you like.
+#
+#   name:      what the alert calls it
+#   url:       the page to check
+#   selector:  the CSS selector for the part that matters
+#              (right-click it in Chrome -> Inspect -> Copy selector)
+#   below / above (optional): a number rule. Without one, ANY change alerts.
+
+watches:
+  # Price rule: alert when this book's price is below £55.
+  # (books.toscrape.com is a public practice site made for scraping demos.)
+  - name: "A Light in the Attic - price"
+    url: "https://books.toscrape.com/catalogue/a-light-in-the-attic_1000/index.html"
+    selector: "p.price_color"
+    below: 55
+
+  # Stock watch: alert when the availability text changes.
+  - name: "Sharp Objects - stock"
+    url: "https://books.toscrape.com/catalogue/sharp-objects_997/index.html"
+    selector: "p.instock.availability"
+
+  # Demo page in this repo. Edit demo/status.html to see a change alert.
+  - name: "Demo status page"
+    url: "https://raw.githubusercontent.com/Brandonbuildsco/website-alert-bot-demo/main/demo/status.html"
+    selector: "#status"
