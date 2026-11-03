@@ -62,7 +62,7 @@ def fetch(session, url):
             resp = session.get(url, timeout=TIMEOUT)
             if resp.status_code < 500:
                 resp.raise_for_status()           # 404 etc. stop right away
-                return resp.text
+                return decode(resp)
             problem = f"server returned {resp.status_code}"
         except (requests.ConnectionError, requests.Timeout) as err:
             problem = str(err)
@@ -71,6 +71,17 @@ def fetch(session, url):
         wait = 2 ** (attempt - 1)
         log.warning("%s: attempt %d failed (%s), retrying in %ss", url, attempt, problem, wait)
         time.sleep(wait)
+
+
+def decode(resp):
+    """
+    Turn the downloaded bytes into text with the right character set.
+    Some sites don't say which one they use, and the fallback guess turns
+    "£" into "Â£". If the server didn't name one, detect it from the content.
+    """
+    if "charset" not in resp.headers.get("Content-Type", "").lower():
+        resp.encoding = resp.apparent_encoding
+    return resp.text
 
 
 def extract(html, selector):
