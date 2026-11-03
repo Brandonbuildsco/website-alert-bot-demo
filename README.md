@@ -30,7 +30,7 @@ Adding a page is three lines in `watches.yml`: a name, the URL, and the part of 
 - **Retries:** if a page fails to load, it waits and tries again.
 - **Fails loudly:** if a site is redesigned and the watched section disappears, you get a "watch broken" alert and the run is marked failed.
 - **One channel down doesn't stop the others:** if email fails, the Issue and push still go out.
-- **Tested:** 10 offline tests run before every check (`tests/`).
+- **Tested:** 11 offline tests run before every check (`tests/`).
 
 ## Run it yourself
 
